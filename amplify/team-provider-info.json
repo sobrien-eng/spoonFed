@@ -1,0 +1,31 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-spoonfed-staging-145751-authRole",
+      "UnauthRoleArn": "arn:aws:iam::227834316789:role/amplify-spoonfed-staging-145751-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::227834316789:role/amplify-spoonfed-staging-145751-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-spoonfed-staging-145751-deployment",
+      "UnauthRoleName": "amplify-spoonfed-staging-145751-unauthRole",
+      "StackName": "amplify-spoonfed-staging-145751",
+      "StackId": "arn:aws:cloudformation:us-west-2:227834316789:stack/amplify-spoonfed-staging-145751/3e5bd8f0-cf0b-11ed-b315-0a7866f50979",
+      "AmplifyAppId": "dlqysein1d179"
+    },
+    "categories": {
+      "function": {
+        "recipes": {
+          "deploymentBucketName": "amplify-spoonfed-staging-145751-deployment",
+          "s3Key": "amplify-builds/recipes-62503972577659484f42-build.zip"
+        },
+        "saved": {
+          "deploymentBucketName": "amplify-spoonfed-staging-145751-deployment",
+          "s3Key": "amplify-builds/saved-5873396d466445737179-build.zip"
+        },
+        "users": {
+          "deploymentBucketName": "amplify-spoonfed-staging-145751-deployment",
+          "s3Key": "amplify-builds/users-2b566172664f30455151-build.zip"
+        }
+      }
+    }
+  }
+}
