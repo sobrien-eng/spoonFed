@@ -8,7 +8,6 @@ const AccountProfile = () => {
             <p>liked</p>
             <p>created</p>
         </div>
-        <div><h5>update/delete account</h5></div>
         </>
     );
 }
