@@ -1,0 +1,24 @@
+#createAcc{
+    background-color: aquamarine;
+    border: 5px rgb(189, 239, 222) solid;
+    width: 30%;
+    
+}
+
+h1{
+    text-align: center;
+}
+
+#loginAcc{
+    background-color: aquamarine;
+    border: 5px rgb(189, 239, 222) solid;
+    width: 30%;
+}
+
+#contain{
+    display: flex;
+    background-color: lightgreen;
+    border: 5px rgb(197, 227, 237) solid;
+    align-content: center;
+    justify-content: center;
+}
