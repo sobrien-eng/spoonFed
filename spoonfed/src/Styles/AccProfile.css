@@ -1,39 +1,5 @@
-#container{
+#box{
     background-color: lightgray;
     border: 5px lightblue solid;
     text-align: center;
-    max-height: 9000px;
-    max-width: 9000px;
-}
-
-div {
-    float: left;
-    padding: 15px; 
-}
-
-#saved{
-    background-color: bisque;
-    border: 5px lavender solid;
-    max-width: 500px;
-    margin: auto;
-}
-
-#liked{
-    background-color: lightsalmon;
-    border: 5px lightgreen solid;
-    max-width: 500px;
-}
-
-#create{
-    background-color: lightseagreen;
-    border: 5px darkcyan solid;
-    max-width: 500px;
-}
-
-li a{
-    display: block;
-    color: black;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
 }
