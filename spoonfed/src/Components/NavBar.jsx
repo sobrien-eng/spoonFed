@@ -4,7 +4,7 @@ const NavBar = () => {
         <nav>
             <ul>
                 <li><a href="#">Home</a></li>
-                <li><a href="#">Account</a></li>
+                <li><a href="#AccProfile">Account</a></li>
                 <li><a href="#">Recipes</a></li>
             </ul>
         </nav>
