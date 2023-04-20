@@ -1,4 +1,5 @@
 import './App.css';
+<<<<<<< Updated upstream
 import AccountProfile from './Components/AccProfile';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import {Account} from './Components/Account';
@@ -24,6 +25,23 @@ function App() {
         </Routes>
       </BrowserRouter>
     </Account>
+=======
+import AccountProfile from './Components/AccProfile.jsx';
+import NavBar from './Components/NavBar';
+import Home from './Components/Home';
+import Recipe from './Components/Recipe';
+import RecipeGrid from './Components/RecipeGrid';
+
+function App() {
+  return (
+    <>
+    <NavBar />
+    {/* <Home /> */}
+    {/* <AccountProfile /> */}
+    {/* <Recipe/> */}
+    <RecipeGrid />
+    </>
+>>>>>>> Stashed changes
   );
 }
 
