@@ -1,0 +1,10 @@
+#container{
+    background-color: aliceblue;
+    border: 5px lightblue solid;
+    align-content: center;
+    justify-content: center;
+}
+
+#title{
+    background-color: #828783
+}

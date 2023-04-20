@@ -3,6 +3,7 @@ const AccountProfile = () => {
     return (
         <>
         <h4>Account Info</h4>
+        logged in already, looking from another account
         <div id='container'>
             <div id="saved">
                 <label>Your saved recipes: </label>
@@ -20,15 +21,8 @@ const AccountProfile = () => {
                     <li><a href="#">Burrito</a></li>
                 </ul>
             </div>
-            <div id="created">
-            <label>Recipes you've created: </label>
-                <ul>
-                    <li><a href="#">Grill Cheese</a></li>
-                    <li><a href="#">Pesto</a></li>
-                    <li><a href="#">Crepes</a></li>
-                </ul>
-            </div>
         </div>
+        <button>Logout</button>
         </>
     );
 }

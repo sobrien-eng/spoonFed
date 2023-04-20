@@ -1,0 +1,32 @@
+#mainContainer{
+    background-color: lightgrey; 
+    text-align: center;
+    border: 6px solid lightslategrey;
+
+}
+
+img{
+    vertical-align: middle;
+    width: 400px;
+    height: 400px;
+    border-radius: 30px;
+    background-color: darkturquoise;
+}
+
+#ingredients-scroll{
+    height: 100px; 
+    overflow-y: scroll;
+    background-color: lightcyan;
+}
+
+#step{
+    height: 100px; 
+    overflow-y: scroll;
+    background-color: lightcyan;
+}
+
+#save{
+    position:relative; 
+    left:10px; 
+    top:-10px;
+}
