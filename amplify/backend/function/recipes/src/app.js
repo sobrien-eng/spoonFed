@@ -31,7 +31,13 @@ const db = mysql.createConnection({
   database: "spoonFed"
 })
 
-db.connect();
+db.connect(function(err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+  console.log('Connected to database');
+});
 /**********************
  * Example get method *
  **********************/
@@ -42,7 +48,6 @@ app.get('/recipes', function(req, res) {
     if (error) throw error;
     res.json(results);
   });
-  res.json({success: 'get call succeed!', url: req.url});
 });
 
 app.get('/recipes/*', function(req, res) {
@@ -58,8 +63,6 @@ app.get('/recipes/*', function(req, res) {
 app.post('/recipes', function(req, res) {
   // Add your code here
   const recipe = req.body
-  
-  // execute a query to insert the new recipe into the RecipeInfo table
   db.query('INSERT INTO RecipeInfo SET ?', recipe, function (error, results, fields) {
     if (error) {
       res.json({error: 'post call failed!', message: error})
@@ -81,6 +84,7 @@ app.post('/recipes/*', function(req, res) {
 
 app.put('/recipes', function(req, res) {
   // Add your code here
+  
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
