@@ -45,6 +45,10 @@ db.connect(function(err) {
 
 app.get('/savedRecipes', function(req, res) {
   // Add your code here
+  db.query('SELECT * FROM SavedRecipes', function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
   res.json({success: 'get call succeed!', url: req.url});
 });
 
@@ -59,7 +63,14 @@ app.get('/savedRecipes/*', function(req, res) {
 
 app.post('/savedRecipes', function(req, res) {
   // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  const SavedRecipe = req.body
+  db.query('INSERT INTO SavedRecipes SET ?', recipe, function (error, results, fields) {
+    if (error) {
+      res.json({error: 'post call failed!', message: error})
+    } else {
+      res.json({success: 'post call succeed!', url: req.url, body: req.body})
+    }
+  })
 });
 
 app.post('/savedRecipes/*', function(req, res) {

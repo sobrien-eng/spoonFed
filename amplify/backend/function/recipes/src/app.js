@@ -70,7 +70,6 @@ app.post('/recipes', function(req, res) {
       res.json({success: 'post call succeed!', data: {id: results.insertId}});
     }
   })
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
 });
 
 app.post('/recipes/*', function(req, res) {

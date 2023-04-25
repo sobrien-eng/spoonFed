@@ -62,8 +62,8 @@ app.get('/users/*', function(req, res) {
 
 app.post('/users', function(req, res) {
   // Add your code here
-  const recipe = req.body
-  db.query('INSERT INTO RecipeInfo SET ?', recipe, function (error, results, fields) {
+  const user = req.body
+  db.query('INSERT INTO Users SET ?', user, function (error, results, fields) {
     if (error) {
       res.json({error: 'post call failed!', message: error})
     } else {
@@ -102,7 +102,7 @@ app.delete('/users', function(req, res) {
 
 app.delete('/users/:id', function(req, res) {
   // Add your code here
-  db.query('DELETE FROM RecipeInfo WHERE id = ?', [req.params.id], function (error, results, fields) {
+  db.query('DELETE FROM Users WHERE id = ?', [req.params.id], function (error, results, fields) {
     if (error) {
       res.json({error: 'delete call failed!', message: error})
     } else if (results.affectedRows === 0) {
