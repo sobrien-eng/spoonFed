@@ -1,18 +1,14 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { Link, useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap';
 
-
-const Recipe = () => {
+const Recipe = ({ title, authorId, picture, prepTime, cookTime, ingredients, steps }) => {
   return (
     <div className='mainContainer'>
-        <div>Recipte Title</div>
-        <div>img</div>
-        <div>userName1</div>
-        <div>Prep time: 15 minutes</div>
-        <div> Cook time: 1 hour</div>
-        <div>Steps: Lorem ipsum text- blah blah blah</div>
-        <div>Ingredients: More lorem ipsum because why not</div>
-        <div>Save</div>
-
+      <Link to={`/recipes/${id}`}>
+        {/* {title} */}
+        Recipe title
+      </Link>
     </div>
   )
 }
