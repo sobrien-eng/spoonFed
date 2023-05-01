@@ -58,7 +58,7 @@ app.get('/recipes/*', function(req, res) {
   res.json({success: 'get call succeed!', url: req.url});
 });
 
-app.get('/recipes/:id', function(req, res) {
+app.get(`recipes/:id`, function(req, res) {
   db.query('SELECT FROM RecipeInfo WHERE id = ?', [req.params.id], function (error, results, fields) {
     if (error) {
       res.json({error: 'Get call failed!', message: error})

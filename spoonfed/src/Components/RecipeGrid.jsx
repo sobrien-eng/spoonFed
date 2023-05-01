@@ -4,16 +4,17 @@ import Recipe from "./Recipe"
 import {React, useState, useEffect }from 'react'
 
 const RecipeGrid = () => {
+    const API_URL = 'http://localhost:3000/recipes'
     const [recipes, setRecipes] = useState([]);
     const [query, setQuery] = useState([]);
-    // useEffect(() => {
-    //     fetch(API_URL)
-    //         .then((res) => res.json())
-    //         .then(data => {
+    useEffect(() => {
+        fetch(API_URL)
+            .then((res) => res.json())
+            .then(data => {
 
-    //             setRecipes(data.results);
-    //         })
-    // }, [])
+                setRecipes(data.results);
+            })
+    }, [])
 
     return (
         <div>
