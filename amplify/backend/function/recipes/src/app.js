@@ -50,10 +50,22 @@ app.get('/recipes', function(req, res) {
   });
 });
 
+app.get('recipes')
+
 app.get('/recipes/*', function(req, res) {
   // Add your code here
   
   res.json({success: 'get call succeed!', url: req.url});
+});
+
+app.get('/recipes/:id', function(req, res) {
+  db.query('SELECT FROM RecipeInfo WHERE id = ?', [req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'Get call failed!', message: error})
+    } else {
+      res.json(results);
+    }
+  })
 });
 
 /****************************
@@ -112,6 +124,143 @@ app.delete('/recipes', function(req, res) {
 
 app.delete('/recipes/:id', function(req, res) {
   db.query('DELETE FROM RecipeInfo WHERE id = ?', [req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'delete call failed!', message: error})
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({error: 'recipe not found'})
+    } else {
+  res.json({success: 'delete call succeed!', url: req.url});
+  }
+  })
+});
+
+////////////////////////////////////////////////
+// Saved Recipes
+app.get('/savedRecipes', function(req, res) {
+  // Add your code here
+  db.query('SELECT * FROM SavedRecipes', function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+  res.json({success: 'get call succeed!', url: req.url});
+});
+
+app.get('/savedRecipes/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'get call succeed!', url: req.url});
+});
+
+/****************************
+* Example post method *
+****************************/
+
+app.post('/savedRecipes', function(req, res) {
+  // Add your code here
+  const SavedRecipe = req.body
+  db.query('INSERT INTO SavedRecipes SET ?', recipe, function (error, results, fields) {
+    if (error) {
+      res.json({error: 'post call failed!', message: error})
+    } else {
+      res.json({success: 'post call succeed!', url: req.url, body: req.body})
+    }
+  })
+});
+
+app.post('/savedRecipes/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+});
+
+/****************************
+* Example put method *
+****************************/
+
+app.put('/savedRecipes', function(req, res) {
+  // Add your code here
+  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+});
+
+app.put('/savedRecipes/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+});
+
+/****************************
+* Example delete method *
+****************************/
+
+app.delete('/savedRecipes', function(req, res) {
+  // Add your code here
+  res.json({success: 'delete call succeed!', url: req.url});
+});
+
+app.delete('/savedRecipes/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'delete call succeed!', url: req.url});
+});
+
+/////////////////////////////////////////
+// Users
+app.get('/users', function(req, res) {
+  // Add your code here
+  db.query('SELECT * FROM Users', function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
+});
+
+app.get('/users/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'get call succeed!', url: req.url});
+});
+
+/****************************
+* Example post method *
+****************************/
+
+app.post('/users', function(req, res) {
+  // Add your code here
+  const user = req.body
+  db.query('INSERT INTO Users SET ?', user, function (error, results, fields) {
+    if (error) {
+      res.json({error: 'post call failed!', message: error})
+    } else {
+      res.json({success: 'post call succeed!', data: {id: results.insertId}});
+    }
+  })
+});
+
+app.post('/users/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+});
+
+/****************************
+* Example put method *
+****************************/
+
+app.put('/users', function(req, res) {
+  // Add your code here
+  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+});
+
+app.put('/users/*', function(req, res) {
+  // Add your code here
+  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+});
+
+/****************************
+* Example delete method *
+****************************/
+
+app.delete('/users', function(req, res) {
+  // Add your code here
+  res.json({success: 'delete call succeed!', url: req.url});
+});
+
+app.delete('/users/:id', function(req, res) {
+  // Add your code here
+  db.query('DELETE FROM Users WHERE id = ?', [req.params.id], function (error, results, fields) {
     if (error) {
       res.json({error: 'delete call failed!', message: error})
     } else if (results.affectedRows === 0) {
