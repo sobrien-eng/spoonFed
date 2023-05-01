@@ -5,9 +5,7 @@ Licensed under the Apache License, Version 2.0 (the "License"). You may not use 
 or in the "license" file accompanying this file. This file is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and limitations under the License.
 */
-
-
-
+const mysql = require("mysql");
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -25,6 +23,21 @@ app.use(function(req, res, next) {
   next()
 });
 
+const db = mysql.createConnection({
+  host: "spoonfed2.cap3bgu68rku.us-west-2.rds.amazonaws.com",
+  user: "admin",
+  password: "spoonFed!1",
+  port: "3306",
+  database: "spoonFed"
+})
+
+db.connect(function(err) {
+  if (err) {
+    console.error('Database connection failed: ' + err.stack);
+    return;
+  }
+  console.log('Connected to database');
+});
 
 /**********************
  * Example get method *
@@ -32,6 +45,10 @@ app.use(function(req, res, next) {
 
 app.get('/savedRecipes', function(req, res) {
   // Add your code here
+  db.query('SELECT * FROM SavedRecipes', function (error, results, fields) {
+    if (error) throw error;
+    res.json(results);
+  });
   res.json({success: 'get call succeed!', url: req.url});
 });
 
@@ -46,7 +63,14 @@ app.get('/savedRecipes/*', function(req, res) {
 
 app.post('/savedRecipes', function(req, res) {
   // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  const SavedRecipe = req.body
+  db.query('INSERT INTO SavedRecipes SET ?', recipe, function (error, results, fields) {
+    if (error) {
+      res.json({error: 'post call failed!', message: error})
+    } else {
+      res.json({success: 'post call succeed!', url: req.url, body: req.body})
+    }
+  })
 });
 
 app.post('/savedRecipes/*', function(req, res) {

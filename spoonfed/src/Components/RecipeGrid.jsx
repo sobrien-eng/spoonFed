@@ -6,7 +6,7 @@ import {React, useState, useEffect }from 'react'
 
 const RecipeGrid = () => {
     const [recipes, setRecipes] = useState([]);
-
+    const [query, setQuery] = useState([]);
     // useEffect(() => {
     //     fetch(API_URL)
     //         .then((res) => res.json())
@@ -19,7 +19,7 @@ const RecipeGrid = () => {
     return (
         <div>
             recipe grid
-            {/* {recipes.length > 0 ? (
+            {recipes.length > 0 ? (
                 <div className="container">
                     <div className="grid">
                         {recipes.map((recipe) =>
@@ -28,7 +28,7 @@ const RecipeGrid = () => {
                 </div>
             ) : (
                 <h2>No Results Found</h2>
-            )} */}
+            )}
         </div>
     )
 }
