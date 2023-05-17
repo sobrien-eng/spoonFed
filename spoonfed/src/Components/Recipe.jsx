@@ -5,10 +5,10 @@ import Button from 'react-bootstrap';
 const Recipe = ({ title, authorId, picture, prepTime, cookTime, ingredients, steps }) => {
   return (
     <div className='mainContainer'>
-      <Link to={`/recipes/${id}`}>
-        {/* {title} */}
+      {/* <Link to={`/recipes/${id}`}>
+        {title}
         Recipe title
-      </Link>
+      </Link> */}
     </div>
   )
 }
