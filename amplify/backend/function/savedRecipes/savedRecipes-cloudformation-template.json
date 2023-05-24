@@ -1,10 +1,6 @@
 {
   "AWSTemplateFormatVersion": "2010-09-09",
-<<<<<<< Updated upstream
-  "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"11.0.3\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
-=======
   "Description": "{\"createdOn\":\"Windows\",\"createdBy\":\"Amplify\",\"createdWith\":\"12.0.0\",\"stackType\":\"function-Lambda\",\"metadata\":{}}",
->>>>>>> Stashed changes
   "Parameters": {
     "CloudWatchRule": {
       "Type": "String",
@@ -51,12 +47,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "users",
+            "savedRecipes",
             {
               "Fn::Join": [
                 "",
                 [
-                  "users",
+                  "savedRecipes",
                   "-",
                   {
                     "Ref": "env"
@@ -82,11 +78,7 @@
             "Arn"
           ]
         },
-<<<<<<< Updated upstream
-        "Runtime": "nodejs16.x",
-=======
         "Runtime": "nodejs18.x",
->>>>>>> Stashed changes
         "Layers": [],
         "Timeout": 25
       }
@@ -97,20 +89,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-<<<<<<< Updated upstream
-            "spoonfedLambdaRole26a29d23",
-=======
-            "spoonfedLambdaRole3c17668e",
->>>>>>> Stashed changes
+            "spoonfedLambdaRole58aa5e53",
             {
               "Fn::Join": [
                 "",
                 [
-<<<<<<< Updated upstream
-                  "spoonfedLambdaRole26a29d23",
-=======
-                  "spoonfedLambdaRole3c17668e",
->>>>>>> Stashed changes
+                  "spoonfedLambdaRole58aa5e53",
                   "-",
                   {
                     "Ref": "env"

@@ -1,4 +1,5 @@
 {
+<<<<<<< Updated upstream
   "staging": {
     "awscloudformation": {
       "AuthRoleName": "amplify-spoonfed-staging-145751-authRole",
@@ -10,10 +11,24 @@
       "StackName": "amplify-spoonfed-staging-145751",
       "StackId": "arn:aws:cloudformation:us-west-2:227834316789:stack/amplify-spoonfed-staging-145751/3e5bd8f0-cf0b-11ed-b315-0a7866f50979",
       "AmplifyAppId": "dlqysein1d179"
+=======
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-spoonfed-dev-210549-authRole",
+      "UnauthRoleArn": "arn:aws:iam::191657648568:role/amplify-spoonfed-dev-210549-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::191657648568:role/amplify-spoonfed-dev-210549-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-spoonfed-dev-210549-deployment",
+      "UnauthRoleName": "amplify-spoonfed-dev-210549-unauthRole",
+      "StackName": "amplify-spoonfed-dev-210549",
+      "StackId": "arn:aws:cloudformation:us-east-2:191657648568:stack/amplify-spoonfed-dev-210549/39104c00-f6bb-11ed-9706-0a32e5046e81",
+      "AmplifyAppId": "d2di6mzjcmjeuh"
+>>>>>>> Stashed changes
     },
     "categories": {
       "function": {
         "recipes": {
+<<<<<<< Updated upstream
           "deploymentBucketName": "amplify-spoonfed-staging-145751-deployment",
           "s3Key": "amplify-builds/recipes-62503972577659484f42-build.zip"
         },
@@ -25,6 +40,22 @@
           "deploymentBucketName": "amplify-spoonfed-staging-145751-deployment",
           "s3Key": "amplify-builds/users-2b566172664f30455151-build.zip"
         }
+=======
+          "deploymentBucketName": "amplify-spoonfed-dev-210549-deployment",
+          "s3Key": "amplify-builds/recipes-59793443646355423276-build.zip"
+        },
+        "savedRecipes": {
+          "deploymentBucketName": "amplify-spoonfed-dev-210549-deployment",
+          "s3Key": "amplify-builds/savedRecipes-574c51682b4a306b4a75-build.zip"
+        },
+        "users": {
+          "deploymentBucketName": "amplify-spoonfed-dev-210549-deployment",
+          "s3Key": "amplify-builds/users-4e644f42772f73426453-build.zip"
+        }
+      },
+      "api": {
+        "api05691f3d": {}
+>>>>>>> Stashed changes
       }
     }
   }

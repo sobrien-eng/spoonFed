@@ -1,6 +1,6 @@
 {
   "api": {
-    "api": {
+    "api05691f3d": {
       "dependsOn": [
         {
           "attributes": [
@@ -16,7 +16,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "users"
+          "resourceName": "savedRecipes"
         },
         {
           "attributes": [
@@ -24,7 +24,7 @@
             "Arn"
           ],
           "category": "function",
-          "resourceName": "saved"
+          "resourceName": "users"
         }
       ],
       "providerPlugin": "awscloudformation",
@@ -37,7 +37,7 @@
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     },
-    "saved": {
+    "savedRecipes": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
@@ -65,19 +65,19 @@
         }
       ]
     },
-    "AMPLIFY_function_saved_deploymentBucketName": {
+    "AMPLIFY_function_savedRecipes_deploymentBucketName": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "saved"
+          "resourceName": "savedRecipes"
         }
       ]
     },
-    "AMPLIFY_function_saved_s3Key": {
+    "AMPLIFY_function_savedRecipes_s3Key": {
       "usedBy": [
         {
           "category": "function",
-          "resourceName": "saved"
+          "resourceName": "savedRecipes"
         }
       ]
     },
