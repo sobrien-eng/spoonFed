@@ -24,11 +24,11 @@ app.use(function(req, res, next) {
 });
 
 const db = mysql.createConnection({
-  host: "spoonfed2.cap3bgu68rku.us-west-2.rds.amazonaws.com",
+  host: "recipes.co9pxtnbjcpn.us-east-2.rds.amazonaws.com",
   user: "admin",
-  password: "spoonFed!1",
+  password: "Password!1",
   port: "3306",
-  database: "spoonFed"
+  database: "recipes"
 })
 
 db.connect(function(err) {
