@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
-import Button from 'react-bootstrap';
+import React, {useState} from 'react';
+import styles from '../Styles/Recipe.css';
+import { Link } from "react-router-dom";
 
 const Recipe = ({ title, authorId, picture, prepTime, cookTime, ingredients, steps }) => {
   return (
@@ -13,4 +13,4 @@ const Recipe = ({ title, authorId, picture, prepTime, cookTime, ingredients, ste
   )
 }
 
-export default Recipe
+export default Recipe;
