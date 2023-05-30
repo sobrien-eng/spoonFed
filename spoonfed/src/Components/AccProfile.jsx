@@ -1,7 +1,9 @@
 import styles from '../Styles/AccProfile.css';
+import NavBar from './NavBar';
 const AccountProfile = () => {
     return (
         <>
+        <NavBar />
         <h4>Account Info</h4>
         <div id='container'>
             <div id="saved">
