@@ -6,8 +6,10 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Status from './Components/Status';
+import 'bootstrap/dist/css/bootstrap.css';
 
 //const apiURL = "https://localhost3000/recipes";
+
 
 function App() {
 
@@ -46,23 +48,22 @@ function App() {
 	// 	setQuery(e.target.value);
 	// }
 	return (
-		// <>
-		// <NavBar />
-		// <Home />
-		// {/*<AccountProfile />*/}
-		// </>
-
-		<Account>
-			<Status />
-			<BrowserRouter>
-				<Routes>
-					<Route path="/" element={<Login />} />
-					<Route path="/home" element={<Home />} />
-					<Route path="/register" element={<Register />} />
-					<Route path="/login" element={<Login />} />
-				</Routes>
-			</BrowserRouter>
-		</Account>
+		<>
+			<div style={{backgroundColor: "#A7B7BD"}}>
+			<Account>
+				<Status />
+				<BrowserRouter>
+					<Routes>
+						<Route path="/" element={<Login />} />
+						<Route path="/home" element={<Home />} />
+						<Route path="/register" element={<Register />} />
+						<Route path="/login" element={<Login />} />
+						<Route path='/accProfile' element={<AccountProfile />} />
+					</Routes>
+				</BrowserRouter>
+			</Account>
+			</div>
+		</>
 	);
 }
 

@@ -1,5 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AccountContext } from './Account';
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 const Status = () => {
     const [status, setStatus] = useState(false);
@@ -18,7 +20,7 @@ const Status = () => {
     }, [status]);
 
     return (
-        <div>
+        <div style={{backgroundColor: "#A7B7BD", color: "white"}}>
             {status ? (
                 <div>
                     {' '}
