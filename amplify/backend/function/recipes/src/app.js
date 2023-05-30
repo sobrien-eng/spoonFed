@@ -24,11 +24,11 @@ app.use(function(req, res, next) {
 });
 
 const db = mysql.createConnection({
-  host: "spoonfed2.cap3bgu68rku.us-west-2.rds.amazonaws.com",
+  host: "recipes.co9pxtnbjcpn.us-east-2.rds.amazonaws.com",
   user: "admin",
-  password: "spoonFed!1",
+  password: "Password!1",
   port: "3306",
-  database: "spoonFed"
+  database: "spoonfed"
 })
 
 db.connect(function(err) {
@@ -54,8 +54,13 @@ app.get('recipes')
 
 app.get('/recipes/*', function(req, res) {
   // Add your code here
-  
-  res.json({success: 'get call succeed!', url: req.url});
+  db.query('SELECT * FROM RecipeInfo WHERE title = ?', [req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'Get call failed!', message: error})
+    } else {
+      res.json(results);
+    }
+  })
 });
 
 app.get(`recipes/:id`, function(req, res) {
@@ -95,8 +100,16 @@ app.post('/recipes/*', function(req, res) {
 
 app.put('/recipes', function(req, res) {
   // Add your code here
-  
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+  const recipe = req.body
+  db.query('UPDATE RecipeInfo SET ?', [recipe, req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'put call failed!', message: error})
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({error: 'recipe not found'})
+    } else {
+      res.json({success: 'put call succeed!', url: req.url, body: req.body})
+    }
+  });
 });
 
 app.put('/recipes/*', function(req, res) {
@@ -246,7 +259,15 @@ app.put('/users', function(req, res) {
 
 app.put('/users/*', function(req, res) {
   // Add your code here
-  res.json({success: 'put call succeed!', url: req.url, body: req.body})
+  db.query('UPDATE Users SET ?', [recipe, req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'put call failed!', message: error})
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({error: 'recipe not found'})
+    } else {
+      res.json({success: 'put call succeed!', url: req.url, body: req.body})
+    }
+  })
 });
 
 /****************************
