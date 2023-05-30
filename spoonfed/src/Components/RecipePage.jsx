@@ -18,6 +18,7 @@ const RecipePage = ({ title, authorId, picture, prepTime, cookTime, ingredients,
     }, []);
     return (
         <>
+        {/* style this page */}
             <NavBar />
             <div>RecipePage</div>
             {recipe && (
