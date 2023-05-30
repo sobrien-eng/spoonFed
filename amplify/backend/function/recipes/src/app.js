@@ -43,7 +43,6 @@ db.connect(function(err) {
  **********************/
 
 app.get('/recipes', function(req, res) {
-  // Add your code here
   db.query('SELECT * FROM RecipeInfo', function (error, results, fields) {
     if (error) throw error;
     res.json(results);
@@ -54,7 +53,7 @@ app.get('recipes')
 
 app.get('/recipes/*', function(req, res) {
   // Add your code here
-  db.query('SELECT * FROM RecipeInfo WHERE title = ?', [req.params.id], function (error, results, fields) {
+  db.query('SELECT * FROM RecipeInfo WHERE title = ? OR id = ?', [req.params.id], function (error, results, fields) {
     if (error) {
       res.json({error: 'Get call failed!', message: error})
     } else {
@@ -78,7 +77,6 @@ app.get(`recipes/:id`, function(req, res) {
 ****************************/
 
 app.post('/recipes', function(req, res) {
-  // Add your code here
   const recipe = req.body
   db.query('INSERT INTO RecipeInfo SET ?', recipe, function (error, results, fields) {
     if (error) {
@@ -91,7 +89,16 @@ app.post('/recipes', function(req, res) {
 
 app.post('/recipes/*', function(req, res) {
   // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  const recipe = req.body;
+  db.query('UPDATE RecipeInfo SET ? WHERE id = ?', [recipe, req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'put call failed!', message: error})
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({error: 'recipe not found'})
+    } else {
+      res.json({success: 'post call succeed!', data: {id: results.insertId}});
+    }
+  })
 });
 
 /****************************
@@ -99,7 +106,6 @@ app.post('/recipes/*', function(req, res) {
 ****************************/
 
 app.put('/recipes', function(req, res) {
-  // Add your code here
   const recipe = req.body
   db.query('UPDATE RecipeInfo SET ?', [recipe, req.params.id], function (error, results, fields) {
     if (error) {
@@ -113,9 +119,8 @@ app.put('/recipes', function(req, res) {
 });
 
 app.put('/recipes/*', function(req, res) {
-  // Add your code here
   const recipe = req.body
-  db.query('UPDATE RecipeInfo SET ? WHERE id = ?', [recipe, req.params.id], function (error, results, fields) {
+  db.query('UPDATE RecipeInfo SET ? WHERE id = ? OR title = ?', [recipe, req.params.id], function (error, results, fields) {
     if (error) {
       res.json({error: 'put call failed!', message: error})
     } else if (results.affectedRows === 0) {
@@ -151,16 +156,24 @@ app.delete('/recipes/:id', function(req, res) {
 // Saved Recipes
 app.get('/savedRecipes', function(req, res) {
   // Add your code here
-  db.query('SELECT * FROM SavedRecipes', function (error, results, fields) {
-    if (error) throw error;
-    res.json(results);
-  });
-  res.json({success: 'get call succeed!', url: req.url});
+  db.query('SELECT FROM SavedRecipes WHERE userId = ?', [req.params.userId], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'Get call failed!', message: error})
+    } else {
+      res.json(results);
+    }
+  })
 });
 
 app.get('/savedRecipes/*', function(req, res) {
   // Add your code here
-  res.json({success: 'get call succeed!', url: req.url});
+  db.query('SELECT FROM SavedRecipes WHERE userId = ?', [req.params.userId], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'Get call failed!', message: error})
+    } else {
+      res.json(results);
+    }
+  })
 });
 
 /****************************
@@ -181,7 +194,14 @@ app.post('/savedRecipes', function(req, res) {
 
 app.post('/savedRecipes/*', function(req, res) {
   // Add your code here
-  res.json({success: 'post call succeed!', url: req.url, body: req.body})
+  const SavedRecipe = req.body
+  db.query('INSERT INTO SavedRecipes SET ?', recipe, function (error, results, fields) {
+    if (error) {
+      res.json({error: 'post call failed!', message: error})
+    } else {
+      res.json({success: 'post call succeed!', url: req.url, body: req.body})
+    }
+  })
 });
 
 /****************************
@@ -195,6 +215,16 @@ app.put('/savedRecipes', function(req, res) {
 
 app.put('/savedRecipes/*', function(req, res) {
   // Add your code here
+  const SavedRecipe = req.body
+  db.query('UPDATE RecipeInfo SET ? WHERE id = ? OR title = ?', [SavedRecipe, req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'put call failed!', message: error})
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({error: 'recipe not found'})
+    } else {
+      res.json({success: 'put call succeed!'});
+    }
+  })
   res.json({success: 'put call succeed!', url: req.url, body: req.body})
 });
 
@@ -224,6 +254,13 @@ app.get('/users', function(req, res) {
 
 app.get('/users/*', function(req, res) {
   // Add your code here
+  db.query('SELECT * FROM Users WHERE id = ? OR username = ?', [req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'Get call failed!', message: error})
+    } else {
+      res.json(results);
+    }
+  })
   res.json({success: 'get call succeed!', url: req.url});
 });
 
@@ -259,11 +296,11 @@ app.put('/users', function(req, res) {
 
 app.put('/users/*', function(req, res) {
   // Add your code here
-  db.query('UPDATE Users SET ?', [recipe, req.params.id], function (error, results, fields) {
+  db.query('UPDATE Users SET ? WHERE id = ?', [recipe, req.params.id], function (error, results, fields) {
     if (error) {
       res.json({error: 'put call failed!', message: error})
     } else if (results.affectedRows === 0) {
-      res.status(404).json({error: 'recipe not found'})
+      res.status(404).json({error: 'User not found'})
     } else {
       res.json({success: 'put call succeed!', url: req.url, body: req.body})
     }
@@ -285,7 +322,7 @@ app.delete('/users/:id', function(req, res) {
     if (error) {
       res.json({error: 'delete call failed!', message: error})
     } else if (results.affectedRows === 0) {
-      res.status(404).json({error: 'recipe not found'})
+      res.status(404).json({error: 'User not found'})
     } else {
   res.json({success: 'delete call succeed!', url: req.url});
   }
