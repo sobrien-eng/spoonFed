@@ -238,8 +238,15 @@ app.delete('/savedRecipes', function(req, res) {
 });
 
 app.delete('/savedRecipes/*', function(req, res) {
-  // Add your code here
+  db.query('DELETE FROM SavedRecipes WHERE id = ?', [req.params.id], function (error, results, fields) {
+    if (error) {
+      res.json({error: 'delete call failed!', message: error})
+    } else if (results.affectedRows === 0) {
+      res.status(404).json({error: 'SavedRecipe not found'})
+    } else {
   res.json({success: 'delete call succeed!', url: req.url});
+  }
+  })
 });
 
 /////////////////////////////////////////
@@ -261,7 +268,6 @@ app.get('/users/*', function(req, res) {
       res.json(results);
     }
   })
-  res.json({success: 'get call succeed!', url: req.url});
 });
 
 /****************************
