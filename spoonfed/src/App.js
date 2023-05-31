@@ -6,6 +6,8 @@ import Home from './Components/Home';
 import Login from './Components/Login';
 import Register from './Components/Register';
 import Status from './Components/Status';
+import Recipe from './Components/Recipe';
+import RecipePage from './Components/RecipePage';
 import 'bootstrap/dist/css/bootstrap.css';
 
 //const apiURL = "https://localhost3000/recipes";
@@ -59,6 +61,8 @@ function App() {
 						<Route path="/register" element={<Register />} />
 						<Route path="/login" element={<Login />} />
 						<Route path='/accProfile' element={<AccountProfile />} />
+						<Route path='/recipe' element={<Recipe />} />
+						{/* <Route path='/recipePage' element={<RecipePage />} /> */}
 					</Routes>
 				</BrowserRouter>
 			</Account>
