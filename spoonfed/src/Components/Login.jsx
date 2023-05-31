@@ -16,6 +16,7 @@ function Login() {
                 console.log(data);
                 alert('login success');
                 window.location.reload();
+				window.location.href= '/AccProfile';
             })
             .catch((err) => {
                 console.log(err);
